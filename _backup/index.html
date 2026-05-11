@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            position: relative;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 600px;
+            padding: 14px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+        .logo {
+            color: white;
+            font-family: sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .partner-section {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .partner-heading {
+            color: rgba(255, 255, 255, 0.5);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .partner-bar {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+        }
+        .partner-bar::before,
+        .partner-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .partner-bar::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(26, 26, 26, 0.95), transparent);
+        }
+        .partner-bar::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(26, 26, 26, 0.95), transparent);
+        }
+        .partner-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            animation: scroll 25s linear infinite;
+            width: max-content;
+            will-change: transform;
+        }
+        .partner-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            letter-spacing: -0.2px;
+            pointer-events: auto;
+        }
+        .partner-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+        .hero-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 300px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            z-index: 5;
+            pointer-events: auto;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.33%); }
+        }
+        .nav-btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 50px;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Logo</div>
+        <button class="nav-btn">Menu</button>
+    </nav>
+    <img src="image.png" alt="Hosted Image">
+    <div class="hero-card"></div>
+    <div class="partner-section">
+        <div class="partner-heading">Used by humans at</div>
+        <div class="partner-bar">
+            <div class="partner-content">
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    Notion
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    Slack
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Databricks
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4l6 14H6l6-14z"/></svg>
+                    Atlassian
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" opacity="0.2"/><path d="M7.5 12c2.5-1 4.5-3.5 7-4.5M7.5 15c2.5-1 4.5-3.5 7-4.5M7.5 9c2.5-1 4.5-3.5 7-4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                    Spotify
+                </div>
+                <!-- Set 2 -->
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    Notion
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    Slack
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Databricks
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4l6 14H6l6-14z"/></svg>
+                    Atlassian
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" opacity="0.2"/><path d="M7.5 12c2.5-1 4.5-3.5 7-4.5M7.5 15c2.5-1 4.5-3.5 7-4.5M7.5 9c2.5-1 4.5-3.5 7-4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                    Spotify
+                </div>
+                <!-- Set 3 -->
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    Notion
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    Slack
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Databricks
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4l6 14H6l6-14z"/></svg>
+                    Atlassian
+                </div>
+                <div class="partner-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" opacity="0.2"/><path d="M7.5 12c2.5-1 4.5-3.5 7-4.5M7.5 15c2.5-1 4.5-3.5 7-4.5M7.5 9c2.5-1 4.5-3.5 7-4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                    Spotify
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
