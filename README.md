@@ -1,5 +1,7 @@
 # AI Agentic Coding Hero Section
 
+![Project Screenshot](./IMAGE/Screenshot%202026-05-13%20084221.png)
+
 A premium, high-performance landing page hero section designed for AI-driven agentic coding platforms. Built with Next.js, Tailwind CSS, and Framer Motion for a stunning, professional aesthetic.
 
 ## 🚀 Live Demo
