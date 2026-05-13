@@ -3,7 +3,7 @@
 A premium, high-performance landing page hero section designed for AI-driven agentic coding platforms. Built with Next.js, Tailwind CSS, and Framer Motion for a stunning, professional aesthetic.
 
 ## 🚀 Live Demo
-**[View Live Site](https://ai-landing-page-hero.vercel.app)**
+**[View Live Site](https://ai-landing-page-hero.vercel.app)** — *100% Free to use*
 
 ## ✨ Key Features
 - **Interactive AI Prompt Box**: A sleek, custom-built prompt interface with character counting, tooltips, and file attachment simulations.
