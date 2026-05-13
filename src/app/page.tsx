@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { PromptInputBox } from "@/components/ui/ai-prompt-box";
+import EditorialTypography from "@/components/ui/editorial-typography";
 import { useRef } from "react";
 
 const partners = [
@@ -14,6 +15,20 @@ const partners = [
 
 export default function Home() {
   const marqueeRef = useRef<HTMLDivElement>(null);
+
+  // --- PROMPT BOX & CARD CONTROL PANEL ---
+  const boxWidth = "700px";          // Width of the box
+  const boxHeight = "auto";          // Height (use "auto" or fixed like "190px")
+  const boxVerticalPosition = "58%"; // 50% is center, higher is lower
+  const boxPaddingX = "8px";         // Side padding
+  const boxPaddingY = "24px";        // Top/bottom padding
+  const boxBorderRadius = "24px";    // Roundness
+  const boxOpacity = "0.08";         // Glass transparency
+  const boxBlur = "20px";            // Blur intensity
+  const boxBorderColor = "rgba(255, 255, 255, 0.2)";
+  const boxZIndex = "50";            // Higher number means top layer
+  const partnerBarBottom = "80px";   // Adjust position of the bottom partner bar
+  // -------------------------------------
 
   return (
     <div className="relative w-full min-h-screen bg-[#1a1a1a] overflow-hidden">
@@ -34,16 +49,36 @@ export default function Home() {
         </button>
       </nav>
 
-      {/* Hero Card with AI Prompt Box */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[420px] h-[360px] rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center p-4">
-        <PromptInputBox
-          onSend={(message, files) => console.log(message, files)}
-          placeholder="Ask anything..."
-        />
-      </div>
+      {/* Editorial Typography */}
+      <EditorialTypography />
+
+      {/* Combined Prompt Box & Card */}
+      <PromptInputBox
+        onSend={(message, files) => console.log(message, files)}
+        placeholder="Ask anything..."
+        className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 !bg-transparent !shadow-[0_8px_32px_rgba(0,0,0,0.3)] !border-none"
+        style={{ 
+          width: boxWidth, 
+          height: boxHeight,
+          top: boxVerticalPosition,
+          zIndex: boxZIndex,
+          paddingLeft: boxPaddingX,
+          paddingRight: boxPaddingX,
+          paddingTop: boxPaddingY,
+          paddingBottom: boxPaddingY,
+          borderRadius: boxBorderRadius,
+          backgroundColor: `rgba(255, 255, 255, ${boxOpacity})`,
+          backdropFilter: `blur(${boxBlur})`,
+          WebkitBackdropFilter: `blur(${boxBlur})`,
+          border: `1px solid ${boxBorderColor}`,
+        }}
+      />
 
       {/* Partner Bar */}
-      <div className="absolute bottom-12 left-0 w-full z-20 flex flex-col items-center gap-4 pointer-events-none">
+      <div 
+        className="absolute left-0 w-full z-20 flex flex-col items-center gap-4 pointer-events-none"
+        style={{ bottom: partnerBarBottom }}
+      >
         <div className="text-white/50 font-sans text-[11px] font-medium tracking-[2px] uppercase pointer-events-auto">
           Used by humans at
         </div>
